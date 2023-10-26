@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+if (isset($_SESSION['usuario'])!="eliasgiova"){
+    header("location:login.php");
+}//validacion para el inicio de session s, no esta logueado
+//no muestra los menu.
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
