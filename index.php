@@ -1,32 +1,31 @@
+<?php include("cabecera.php"); ?>
+<?php include("conexion.php"); ?>
 <?php
-
-    include ("cabecera.php");
-
+$objConexion = new Conexion();
+$proyectos = $objConexion->consultar("SELECT * FROM `proyectos`");
 ?>
+<br />
 <div class="row align-items-md-stretch">
     <div class="col-md-6">
-        <div
-            class="h-100 p-5 text-white bg-primary border rounded-3">
-            <h2>Bienvenido a mi Portafolio</h2>
-            <p>Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then,
-                mix and match with additional component themes and more.</p>
-            <button class="btn btn-outline-primary" type="button">Example button</button>
+        <div class="h-100 p-5 text-white bg-primary border rounded-3">
+            <h1>Bienvenid@s</h1>
+            <p>Este es un Portafolio Privado</p>
         </div>
     </div>
-    <div class="col-md-6">
-        <div
-            class="h-100 p-5 bg-primary border rounded-3">
-            <h2>Add borders</h2>
-            <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure
-                to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both
-                column's content for equal-height.</p>
-            <button class="btn Swap the background-color utility and add a `.text-*` color utility to mix up the jumbotron look. Then,
-                mix and match with additional component themes and more." type="button">Example button</button>
+</div> 
+<br />
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <?php foreach ($proyectos as $proyecto) { ?>
+        <div class="col">
+            <div class="card">
+                <img src="img/<?php echo $proyecto['imagen']; ?>" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $proyecto['nombre']; ?></h5>
+                    <p class="card-text"><?php echo $proyecto['descripcion']; ?></p>
+                </div>
+            </div>
         </div>
-    </div>
+    <?php } ?>
 </div>
-<?php
 
-    include ("pie.php");
-
-?>
+<?php include("pie.php"); ?>
